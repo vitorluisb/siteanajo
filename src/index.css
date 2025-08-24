@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core brand colors - warm and hopeful */
+    --background: 35 15% 98%;
+    --foreground: 25 25% 15%;
+
+    --card: 35 20% 99%;
+    --card-foreground: 25 25% 15%;
+
+    --popover: 35 20% 99%;
+    --popover-foreground: 25 25% 15%;
+
+    /* Primary: Soft hope green */
+    --primary: 142 35% 45%;
+    --primary-foreground: 35 20% 99%;
+    --primary-soft: 142 25% 85%;
+    --primary-muted: 142 15% 95%;
+
+    /* Secondary: Warm beige */
+    --secondary: 35 25% 92%;
+    --secondary-foreground: 25 25% 25%;
+
+    /* Muted warm tones */
+    --muted: 35 15% 94%;
+    --muted-foreground: 25 15% 55%;
+
+    /* Accent: Gentle green */
+    --accent: 142 20% 88%;
+    --accent-foreground: 25 25% 25%;
+
+    /* Warm earth tones */
+    --warm: 30 35% 88%;
+    --warm-foreground: 25 25% 25%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 35 20% 99%;
+
+    --border: 35 20% 88%;
+    --input: 35 20% 91%;
+    --ring: 142 35% 45%;
+
+    /* Gradients for warmth and hope */
+    --gradient-hope: linear-gradient(135deg, hsl(142 35% 45%), hsl(142 25% 65%));
+    --gradient-warm: linear-gradient(180deg, hsl(35 25% 98%), hsl(35 20% 95%));
+    --gradient-soft: linear-gradient(45deg, hsl(142 15% 95%), hsl(35 15% 95%));
+
+    /* Shadows for depth */
+    --shadow-gentle: 0 4px 20px hsl(142 35% 45% / 0.08);
+    --shadow-warm: 0 8px 30px hsl(25 25% 15% / 0.06);
+    --shadow-card: 0 2px 15px hsl(142 20% 20% / 0.05);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Typography - humanized and readable */
+  h1, h2, h3, h4, h5, h6 {
+    @apply leading-relaxed;
+  }
+
+  /* Smooth transitions for interactive elements */
+  * {
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer components {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.4s ease-out forwards;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-[var(--shadow-card)] hover:-translate-y-1;
+  }
+
+  /* Button styles */
+  .btn-hope {
+    @apply bg-[var(--gradient-hope)] text-primary-foreground shadow-[var(--shadow-gentle)] hover:scale-105 transition-all duration-200;
+  }
+
+  .btn-warm {
+    @apply bg-warm text-warm-foreground border border-border hover:bg-accent transition-all duration-200;
+  }
+}
+
+@layer utilities {
+  /* Gradient backgrounds */
+  .bg-gradient-hope {
+    background: var(--gradient-hope);
+  }
+
+  .bg-gradient-warm {
+    background: var(--gradient-warm);
+  }
+
+  .bg-gradient-soft {
+    background: var(--gradient-soft);
+  }
+
+  /* Shadow utilities */
+  .shadow-gentle {
+    box-shadow: var(--shadow-gentle);
+  }
+
+  .shadow-warm {
+    box-shadow: var(--shadow-warm);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+}
+
+/* Keyframes for animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
